@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl4u2n6l51kse"]
+
+[ext_resource type="PackedScene" uid="uid://cyk5uvuwov30b" path="res://world/children/school.tscn" id="1_trdn1"]
+[ext_resource type="TileSet" uid="uid://feeksck78hsd" path="res://world/world_tilemap.tres" id="2_3nid3"]
+
+[node name="school_full" type="Node2D"]
+
+[node name="school" parent="." instance=ExtResource("1_trdn1")]
+position = Vector2(14, 10)
+
+[node name="school2" parent="." instance=ExtResource("1_trdn1")]
+position = Vector2(75, 11)
+
+[node name="school3" parent="." instance=ExtResource("1_trdn1")]
+position = Vector2(-63, 10)
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(1, 0.989149)
+tile_set = ExtResource("2_3nid3")
+cell_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(-262141, 0, 393216, -196616, 0, 327680, 262136, 0, 65536, 196611, 0, 131072, -196615, 0, 458752, -196614, 0, 458752, -196613, 0, 458752, -196612, 0, 458752, -196611, 0, 458752, -196610, 0, 458752, -196609, 0, 458752, -262144, 0, 458752, -262143, 0, 458752, -262142, 0, 458752, 262137, 0, 524288, 262138, 0, 524288, 262139, 0, 524288, 262140, 0, 524288, 262141, 0, 524288, 262142, 0, 524288, 262143, 0, 524288, 196608, 0, 524288, 196609, 0, 524288, 196610, 0, 524288, -131080, 0, 196608, -65544, 0, 196608, -8, 0, 196608, 65528, 0, 196608, 131064, 0, 196608, 196600, 0, 196608, -196605, 0, 196608, -131069, 0, 196608, -65533, 0, 196608, 3, 0, 196608, 65539, 0, 196608, 131075, 0, 196608)
+
+[node name="school4" parent="." instance=ExtResource("1_trdn1")]
+position = Vector2(14, 10)

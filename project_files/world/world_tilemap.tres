@@ -1,0 +1,55 @@
+[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://feeksck78hsd"]
+
+[ext_resource type="PackedScene" uid="uid://brt41pgvdnjdg" path="res://world/buildings/building_bl.tscn" id="1_jbk71"]
+[ext_resource type="PackedScene" uid="uid://s33rwouk8xs8" path="res://world/buildings/building_br.tscn" id="2_frvtg"]
+[ext_resource type="PackedScene" uid="uid://wsjac6ilbj1f" path="res://world/buildings/horiz_botFlip.tscn" id="2_moxo0"]
+[ext_resource type="PackedScene" uid="uid://c3td1odafidsn" path="res://world/buildings/building_mid.tscn" id="3_orhpc"]
+[ext_resource type="PackedScene" uid="uid://cl7culuu58lfv" path="res://world/buildings/building_midLeft.tscn" id="4_3cqsb"]
+[ext_resource type="PackedScene" uid="uid://nyde7ug3veit" path="res://world/buildings/building_tl.tscn" id="5_yux7s"]
+[ext_resource type="PackedScene" uid="uid://biqcv6fwytwd6" path="res://world/buildings/building_tr.tscn" id="6_jn5te"]
+[ext_resource type="PackedScene" uid="uid://bcl6cvu4etxsj" path="res://world/buildings/horiz_bot.tscn" id="7_kvdo2"]
+[ext_resource type="PackedScene" uid="uid://bp6q4iel613vo" path="res://world/buildings/horiz_top.tscn" id="8_3cv0t"]
+[ext_resource type="PackedScene" uid="uid://crjljlqyxbfp8" path="res://world/larger_buildings/local_spawner.tscn" id="9_1qvyp"]
+[ext_resource type="PackedScene" uid="uid://cuooo7h5gra8x" path="res://world/buildings/horiz_topFlip.tscn" id="10_ar0op"]
+[ext_resource type="PackedScene" uid="uid://cyk5uvuwov30b" path="res://world/children/school.tscn" id="10_lnerc"]
+[ext_resource type="PackedScene" uid="uid://ccr8bpkmqi4vw" path="res://world/indistructable/indis_walls.tscn" id="10_norpo"]
+[ext_resource type="PackedScene" uid="uid://bsyskwd3qwavu" path="res://world/bomb/bomb.tscn" id="12_r8ju0"]
+[ext_resource type="PackedScene" uid="uid://cnr2kxjeje47e" path="res://world/indistructable/invis_walls.tscn" id="13_6wqeb"]
+[ext_resource type="PackedScene" uid="uid://p3mtlr6mw02d" path="res://world/door/door.tscn" id="13_r4pg8"]
+[ext_resource type="PackedScene" uid="uid://b72xx2h43au48" path="res://world/door/door_back.tscn" id="14_2gbft"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_d2bxs"]
+resource_name = "main_buildings"
+scenes/1/scene = ExtResource("1_jbk71")
+scenes/2/scene = ExtResource("2_frvtg")
+scenes/3/scene = ExtResource("3_orhpc")
+scenes/4/scene = ExtResource("4_3cqsb")
+scenes/5/scene = ExtResource("5_yux7s")
+scenes/6/scene = ExtResource("6_jn5te")
+scenes/7/scene = ExtResource("7_kvdo2")
+scenes/8/scene = ExtResource("8_3cv0t")
+scenes/9/scene = ExtResource("10_ar0op")
+scenes/10/scene = ExtResource("2_moxo0")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_qfsop"]
+resource_name = "Spawners"
+scenes/1/scene = ExtResource("9_1qvyp")
+scenes/3/scene = ExtResource("10_lnerc")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_db0lh"]
+resource_name = "indistructable"
+scenes/1/scene = ExtResource("10_norpo")
+scenes/2/scene = ExtResource("12_r8ju0")
+scenes/3/scene = ExtResource("13_6wqeb")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dwyl1"]
+resource_name = "level_stuff"
+scenes/1/scene = ExtResource("13_r4pg8")
+scenes/2/scene = ExtResource("14_2gbft")
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_d2bxs")
+sources/1 = SubResource("TileSetScenesCollectionSource_qfsop")
+sources/2 = SubResource("TileSetScenesCollectionSource_db0lh")
+sources/4 = SubResource("TileSetScenesCollectionSource_dwyl1")

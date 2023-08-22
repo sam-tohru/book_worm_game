@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://sxl0a842q60g"]
+
+[ext_resource type="TileSet" uid="uid://feeksck78hsd" path="res://world/world_tilemap.tres" id="1_uqkog"]
+[ext_resource type="PackedScene" uid="uid://kd5p3mwr045k" path="res://world/children/child.tscn" id="2_7n7jh"]
+[ext_resource type="PackedScene" uid="uid://qfyew5q7cv8d" path="res://enemies/melee/enemy_melee.tscn" id="3_ty7p3"]
+
+[node name="house" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(1, 0.989149)
+tile_set = ExtResource("1_uqkog")
+cell_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(65534, 0, 65536, 65535, 0, 524288, 0, 0, 524288, 1, 0, 131072, -65535, 0, 196608, -2, 0, 196608, -65538, 0, 196608, -196607, 0, 393216, -131071, 0, 196608, -196608, 0, 458752, -131073, 0, 458752, -131074, 0, 327680)
+
+[node name="child" parent="." instance=ExtResource("2_7n7jh")]
+position = Vector2(-14, -18)
+
+[node name="child2" parent="." instance=ExtResource("2_7n7jh")]
+position = Vector2(18, -11)
+
+[node name="enemy_melee" parent="." instance=ExtResource("3_ty7p3")]
+position = Vector2(-18, -51)
+FROZEN = true

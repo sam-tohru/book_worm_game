@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://na4vunp373bk"]
+
+[ext_resource type="TileSet" uid="uid://feeksck78hsd" path="res://world/world_tilemap.tres" id="1_6xaak"]
+[ext_resource type="Texture2D" uid="uid://dwruvlrxt61ef" path="res://world/sprites/world_things/pattern_02.png" id="2_8najj"]
+[ext_resource type="PackedScene" uid="uid://qfyew5q7cv8d" path="res://enemies/melee/enemy_melee.tscn" id="2_g5va3"]
+[ext_resource type="PackedScene" uid="uid://dlf3dvj61yqi4" path="res://world/levels/area_next.tscn" id="3_l6asf"]
+[ext_resource type="FontFile" uid="uid://ckxk3elimfey3" path="res://resources/fonts/Kaph-Regular.otf" id="4_quucd"]
+
+[node name="level_02" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_6xaak")
+format = 2
+layer_0/tile_data = PackedInt32Array(-196609, 2, 65536, -262145, 2, 65536, -327681, 2, 65536, 196607, 2, 65536, 262143, 2, 65536, 327679, 2, 65536, 393215, 2, 65536, 327680, 2, 65536, 327681, 2, 65536, 327682, 2, 65536, 327683, 2, 65536, 327684, 2, 65536, 327685, 2, 65536, 327686, 2, 65536, 327687, 2, 65536, 327688, 2, 65536, 327689, 2, 65536, 327690, 2, 65536, 327691, 2, 65536, 327692, 2, 65536, 327693, 2, 65536, 327694, 2, 65536, 327695, 2, 65536, 327696, 2, 65536, 327697, 2, 65536, 327698, 2, 65536, 327699, 2, 65536, 327700, 2, 65536, 327701, 2, 65536, 327702, 2, 65536, 327703, 2, 65536, -393217, 2, 65536, -458752, 2, 65536, -458751, 2, 65536, -458750, 2, 65536, -458749, 2, 65536, -458748, 2, 65536, -458747, 2, 65536, -458746, 2, 65536, -458745, 2, 65536, -458744, 2, 65536, -458743, 2, 65536, -458742, 2, 65536, -458741, 2, 65536, -458740, 2, 65536, -458739, 2, 65536, -458738, 2, 65536, -458737, 2, 65536, -458736, 2, 65536, -458735, 2, 65536, -458734, 2, 65536, -458733, 2, 65536, -458732, 2, 65536, -458731, 2, 65536, -458730, 2, 65536, -458729, 2, 65536, -458728, 2, 65536, 327704, 2, 65536, -458727, 2, 65536, -393191, 2, 65536, -327655, 2, 65536, -262119, 2, 65536, 131097, 2, 65536, 196633, 2, 65536, 262169, 2, 65536, 327705, 2, 65536, -393211, 0, 524288, -393210, 0, 524288, -393209, 0, 524288, -393208, 0, 524288, -393207, 0, 524288, -393206, 0, 524288, -393205, 0, 524288, -393204, 0, 524288, -393203, 0, 524288, -393202, 0, 524288, -393201, 0, 524288, -393200, 0, 524288, -393199, 0, 524288, -393198, 0, 524288, -393197, 0, 524288, 262149, 0, 458752, 262150, 0, 458752, 262151, 0, 458752, 262152, 0, 458752, 262153, 0, 458752, 262154, 0, 458752, 262155, 0, 458752, 262156, 0, 458752, 262157, 0, 458752, 262158, 0, 458752, 262159, 0, 458752, 262160, 0, 458752, 262161, 0, 458752, 262162, 0, 458752, 262163, 0, 458752, -65511, 4, 65536, -1, 4, 131072, -262146, 2, 196608, -262147, 2, 196608, -262148, 2, 196608, 262140, 2, 196608, 262141, 2, 196608, 262142, 2, 196608, -262149, 2, 196608, -196613, 2, 196608, -131077, 2, 196608, -65541, 2, 196608, -5, 2, 196608, 65531, 2, 196608, 131067, 2, 196608, 196603, 2, 196608, 262139, 2, 196608, -327654, 2, 196608, -327653, 2, 196608, -327652, 2, 196608, -327651, 2, 196608, -262115, 2, 196608, -196579, 2, 196608, -131043, 2, 196608, -65507, 2, 196608, 29, 2, 196608, 65565, 2, 196608, 131101, 2, 196608, 196637, 2, 196608, 196636, 2, 196608, 196635, 2, 196608, 196634, 2, 196608)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+offset_left = -5956.0
+offset_top = -4009.0
+offset_right = 5685.0
+offset_bottom = 3740.0
+mouse_filter = 2
+color = Color(0.113725, 0.0862745, 0.0745098, 1)
+
+[node name="pattern" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(404, -18)
+rotation = -1.5708
+scale = Vector2(1.70631, 1.51799)
+texture = ExtResource("2_8najj")
+
+[node name="enemy_melee" parent="." instance=ExtResource("2_g5va3")]
+position = Vector2(579, -8)
+rotation = 3.14159
+FROZEN = true
+
+[node name="area_next" parent="." groups=["1-0"] instance=ExtResource("3_l6asf")]
+position = Vector2(-978, -10)
+
+[node name="area_next2" parent="." groups=["1-2"] instance=ExtResource("3_l6asf")]
+position = Vector2(1779, -48)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 63.0
+offset_top = -74.0
+offset_right = 560.0
+offset_bottom = -51.0
+theme_override_fonts/font = ExtResource("4_quucd")
+text = "You won't get past me, I'm Micheal"
+
+[connection signal="body_entered" from="TileMap/door" to="TileMap/door" method="_on_body_entered" flags=18]

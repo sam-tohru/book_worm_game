@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://crjljlqyxbfp8"]
+
+[ext_resource type="Script" path="res://world/larger_buildings/local_spawner.gd" id="1_n4ch1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_868fb"]
+radius = 500.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4xmr"]
+size = Vector2(49, 77)
+
+[node name="spawner" type="Node2D"]
+script = ExtResource("1_n4ch1")
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(1, 0.989149)
+cell_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(-2, 0, 196608, -65536, 0, 196608, -65538, 0, 327680, -131072, 0, 393216, -65537, 0, 458752, 65534, 0, 196608, 0, 0, 196608)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(3, -10)
+rotation = 1.11701
+
+[node name="roof" type="ColorRect" parent="."]
+z_index = 4
+offset_left = -27.0
+offset_top = -40.0
+offset_right = 26.0
+offset_bottom = 39.0
+mouse_filter = 2
+color = Color(0.654902, 0.243137, 0.172549, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="spawn_area" type="Area2D" parent="."]
+position = Vector2(16, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area"]
+shape = SubResource("CircleShape2D_868fb")
+
+[node name="destroy_area" type="Area2D" parent="."]
+position = Vector2(16, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="destroy_area"]
+position = Vector2(-16.5, -12.5)
+shape = SubResource("RectangleShape2D_s4xmr")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="destroy_area" to="." method="_on_destroy_area_body_entered"]

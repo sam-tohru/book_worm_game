@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyk5uvuwov30b"]
+
+[ext_resource type="PackedScene" uid="uid://kd5p3mwr045k" path="res://world/children/child.tscn" id="1_2m1r8"]
+[ext_resource type="Texture2D" uid="uid://c7d7gjl32dk2h" path="res://world/sprites/desk.png" id="1_byd76"]
+
+[node name="school" type="Node2D"]
+
+[node name="child" parent="." instance=ExtResource("1_2m1r8")]
+position = Vector2(-60, -8)
+
+[node name="child2" parent="." instance=ExtResource("1_2m1r8")]
+position = Vector2(-61, 28)
+
+[node name="child3" parent="." instance=ExtResource("1_2m1r8")]
+position = Vector2(-62, -47)
+
+[node name="desks" type="Node2D" parent="."]
+
+[node name="desk1" type="Sprite2D" parent="desks"]
+position = Vector2(-54, -47)
+texture = ExtResource("1_byd76")
+
+[node name="desk2" type="Sprite2D" parent="desks"]
+position = Vector2(-52, -8)
+texture = ExtResource("1_byd76")
+
+[node name="desk3" type="Sprite2D" parent="desks"]
+position = Vector2(-53, 28)
+texture = ExtResource("1_byd76")

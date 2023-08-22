@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://kd5p3mwr045k"]
+
+[ext_resource type="Script" path="res://world/children/child.gd" id="1_fbb8h"]
+[ext_resource type="Texture2D" uid="uid://c314gvp5q6v81" path="res://world/sprites/child.png" id="2_6tnkf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64jna"]
+size = Vector2(648.666, 184)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ln7d8"]
+
+[node name="child" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 25
+script = ExtResource("1_fbb8h")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_64jna")
+
+[node name="particles_below" type="Node2D" parent="."]
+position = Vector2(6, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ln7d8")
+
+[node name="sprite_body" type="Sprite2D" parent="."]
+texture = ExtResource("2_6tnkf")
+
+[node name="special_cooldown" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="ani_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="walkthrough_timer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="special_cooldown" to="." method="_on_special_cooldown_timeout"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="ani_timer" to="." method="_on_ani_timer_timeout"]
+[connection signal="timeout" from="walkthrough_timer" to="." method="_on_walkthrough_timer_timeout"]

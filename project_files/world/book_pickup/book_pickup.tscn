@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b54ons0ec13x5"]
+
+[ext_resource type="Texture2D" uid="uid://jcbpxypma113" path="res://world/sprites/book_pickup.png" id="1_4foji"]
+[ext_resource type="Script" path="res://world/book_pickup/book_pickup.gd" id="1_ntgir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2e33"]
+size = Vector2(18, 29)
+
+[node name="book_pickup" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_ntgir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_c2e33")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4foji")
+
+[node name="tween_timer" type="Timer" parent="."]
+wait_time = 0.45
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="tween_timer" to="." method="_on_tween_timer_timeout"]

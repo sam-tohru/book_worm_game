@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b72xx2h43au48"]
+
+[ext_resource type="Texture2D" uid="uid://csvaovqn2fl71" path="res://world/sprites/door.png" id="2_exlg2"]
+[ext_resource type="Texture2D" uid="uid://brb8veuxyqiay" path="res://world/sprites/door-block.png" id="3_8iqlu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iodeg"]
+size = Vector2(8, 128)
+
+[node name="door_back" type="Area2D" groups=["door_back"]]
+scale = Vector2(1.25, 1.25)
+
+[node name="closed_door" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_exlg2")
+
+[node name="open_door" type="Sprite2D" parent="."]
+position = Vector2(-5, 0)
+texture = ExtResource("3_8iqlu")
+flip_h = true
+
+[node name="closed_static" type="StaticBody2D" parent="."]
+position = Vector2(0, -64)
+
+[node name="collision_static" type="CollisionShape2D" parent="closed_static"]
+position = Vector2(0, 64)
+shape = SubResource("RectangleShape2D_iodeg")
+debug_color = Color(0.913725, 0.278431, 0.223529, 0.419608)

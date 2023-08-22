@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3td1odafidsn"]
+
+[ext_resource type="Script" path="res://world/buildings/building_area.gd" id="1_u0pl3"]
+[ext_resource type="Script" path="res://world/buildings/buildings.gd" id="1_xirfl"]
+[ext_resource type="Texture2D" uid="uid://be7t2okvs7rc4" path="res://world/sprites/shelf_full.png" id="3_0tdy8"]
+[ext_resource type="Texture2D" uid="uid://dnbqf8iy5g7hr" path="res://world/sprites/building_corner.png" id="3_v6mem"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wackd"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5257k"]
+size = Vector2(36, 68)
+
+[node name="building_mid" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
+collision_mask = 19
+script = ExtResource("1_xirfl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 16.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0.654902, 0.243137, 0.172549, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wackd")
+
+[node name="building_area" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 17
+script = ExtResource("1_u0pl3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="building_area"]
+shape = SubResource("RectangleShape2D_5257k")
+debug_color = Color(0.933333, 0.25098, 0.203922, 0.419608)
+
+[node name="book_marker" type="Marker2D" parent="building_area"]
+position = Vector2(-34, 0)
+
+[node name="building_sprite1" type="Sprite2D" parent="." groups=["half_change"]]
+position = Vector2(0, 16)
+rotation = 1.5708
+texture = ExtResource("3_0tdy8")
+
+[node name="building_sprite2" type="Sprite2D" parent="." groups=["half_change"]]
+position = Vector2(0, -16)
+rotation = 1.5708
+texture = ExtResource("3_0tdy8")
+
+[node name="corner_sprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 16)
+texture = ExtResource("3_v6mem")
+
+[connection signal="body_entered" from="building_area" to="building_area" method="_on_body_entered"]

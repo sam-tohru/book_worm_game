@@ -1,0 +1,186 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8wcut8dr351d"]
+
+[ext_resource type="TileSet" uid="uid://feeksck78hsd" path="res://world/world_tilemap.tres" id="1_2tttn"]
+[ext_resource type="Script" path="res://world/levels/01_start/level_01.gd" id="1_qt1cv"]
+[ext_resource type="FontFile" uid="uid://ckxk3elimfey3" path="res://resources/fonts/Kaph-Regular.otf" id="2_rt7i8"]
+[ext_resource type="PackedScene" uid="uid://dlf3dvj61yqi4" path="res://world/levels/area_next.tscn" id="4_ql3gw"]
+[ext_resource type="PackedScene" uid="uid://kd5p3mwr045k" path="res://world/children/child.tscn" id="5_h8h3e"]
+[ext_resource type="Texture2D" uid="uid://calni0gxqagj4" path="res://world/sprites/world_things/rug.png" id="6_ea2qa"]
+
+[node name="level_01" type="Node2D" groups=["1"]]
+script = ExtResource("1_qt1cv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+offset_left = -5984.0
+offset_top = -4003.0
+offset_right = 5657.0
+offset_bottom = 3746.0
+mouse_filter = 2
+color = Color(0.113725, 0.0862745, 0.0745098, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+z_index = -4
+offset_left = -263.0
+offset_top = -229.0
+offset_right = 554.0
+offset_bottom = 228.0
+scale = Vector2(0.838, 1)
+mouse_filter = 2
+color = Color(0.2, 0.160784, 0.137255, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -4
+offset_left = -258.0
+offset_top = -224.0
+offset_right = 549.0
+offset_bottom = 223.0
+scale = Vector2(0.838, 1)
+mouse_filter = 2
+color = Color(0.152941, 0.121569, 0.101961, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+z_index = -4
+offset_left = -253.0
+offset_top = -219.0
+offset_right = 545.0
+offset_bottom = 218.0
+scale = Vector2(0.838, 1)
+mouse_filter = 2
+color = Color(0.113725, 0.0862745, 0.0745098, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_2tttn")
+format = 2
+layer_0/tile_data = PackedInt32Array(-589799, 2, 65536, -524263, 2, 65536, -458727, 2, 65536, -393191, 2, 65536, -327655, 2, 65536, -262119, 2, 65536, -196583, 2, 65536, 196633, 2, 65536, 262169, 2, 65536, 327705, 2, 65536, 393241, 2, 65536, 458777, 2, 65536, 524313, 2, 65536, 25, 4, 65536, -262118, 2, 196608, -262117, 2, 196608, -262116, 2, 196608, -262115, 2, 196608, -196579, 2, 196608, -131043, 2, 196608, -65507, 2, 196608, 29, 2, 196608, 65565, 2, 196608, 131101, 2, 196608, 196637, 2, 196608, 262173, 2, 196608, 262172, 2, 196608, 262171, 2, 196608, 262170, 2, 196608, -196592, 0, 196608, -131056, 0, 196608, -65520, 0, 196608, 16, 0, 196608, 65552, 0, 196608, 131088, 0, 196608, 196624, 0, 196608, -196591, 0, 262144, -131055, 0, 262144, -65519, 0, 262144, 17, 0, 262144, 65553, 0, 262144, 131089, 0, 262144, 196625, 0, 262144, -524299, 2, 65536, -458763, 2, 65536, -393227, 2, 65536, -524300, 2, 65536, -458764, 2, 65536, -393228, 2, 65536, -327692, 2, 65536, -262156, 2, 65536, -196620, 2, 65536, -131084, 2, 65536, -65548, 2, 65536, -12, 2, 65536, 65524, 2, 65536, 131060, 2, 65536, 196596, 2, 65536, 262132, 2, 65536, 327668, 2, 65536, 393204, 2, 65536, 458740, 2, 65536, 524276, 2, 65536, 589812, 2, 65536, 458741, 2, 65536, 524277, 2, 65536, 589813, 2, 65536, -458754, 0, 524288, -458753, 0, 524288, -524288, 0, 524288, -524287, 0, 524288, -524286, 0, 524288, -524285, 0, 524288, -458755, 0, 524288, 524285, 0, 458752, 524286, 0, 458752, 524287, 0, 458752, 458752, 0, 458752, 458753, 0, 458752, 458754, 0, 458752, 458755, 0, 458752, 589814, 2, 65536, 589815, 2, 65536, 589816, 2, 65536, 589817, 2, 65536, 589818, 2, 65536, 589819, 2, 65536, 589820, 2, 65536, 589821, 2, 65536, 589822, 2, 65536, 589823, 2, 65536, 524288, 2, 65536, 524289, 2, 65536, 524290, 2, 65536, 524291, 2, 65536, 524292, 2, 65536, 524293, 2, 65536, 524294, 2, 65536, 524295, 2, 65536, 524296, 2, 65536, 524297, 2, 65536, 524298, 2, 65536, 524299, 2, 65536, 524300, 2, 65536, 524301, 2, 65536, 524302, 2, 65536, 524303, 2, 65536, 524304, 2, 65536, 524305, 2, 65536, 524306, 2, 65536, 524307, 2, 65536, 524308, 2, 65536, 524309, 2, 65536, 524310, 2, 65536, 524311, 2, 65536, 524312, 2, 65536, -589836, 2, 65536, -589835, 2, 65536, -589834, 2, 65536, -589833, 2, 65536, -589832, 2, 65536, -589831, 2, 65536, -589830, 2, 65536, -589829, 2, 65536, -589828, 2, 65536, -589827, 2, 65536, -589826, 2, 65536, -589825, 2, 65536, -655360, 2, 65536, -655359, 2, 65536, -655358, 2, 65536, -655357, 2, 65536, -655356, 2, 65536, -655355, 2, 65536, -655354, 2, 65536, -655353, 2, 65536, -655352, 2, 65536, -655351, 2, 65536, -655350, 2, 65536, -655349, 2, 65536, -655348, 2, 65536, -655347, 2, 65536, -655346, 2, 65536, -655345, 2, 65536, -655344, 2, 65536, -655343, 2, 65536, -655342, 2, 65536, -655341, 2, 65536, -655340, 2, 65536, -655339, 2, 65536, -655338, 2, 65536, -655337, 2, 65536, -655336, 2, 65536, -655335, 2, 65536)
+
+[node name="controls" type="Label" parent="."]
+visible = false
+offset_left = -115.0
+offset_top = -173.0
+offset_right = 128.0
+offset_bottom = -107.0
+theme_override_fonts/font = ExtResource("2_rt7i8")
+text = "Left click -> shoot
+
+"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="controls2" type="Label" parent="controls"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 14.0
+offset_right = 239.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("2_rt7i8")
+text = "
+Right click -> dash
+"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="controls3" type="Label" parent="controls"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 27.0
+offset_right = 249.0
+offset_bottom = 115.0
+theme_override_fonts/font = ExtResource("2_rt7i8")
+text = "
+
+Space -> Move
+"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="controls5" type="Label" parent="controls/controls3"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 67.0
+offset_right = 399.0
+offset_bottom = 133.0
+scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("2_rt7i8")
+text = "(and stops being rigid after dash)"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="area_next" parent="." groups=["0-1"] instance=ExtResource("4_ql3gw")]
+position = Vector2(1782, -25)
+
+[node name="child" parent="." instance=ExtResource("5_h8h3e")]
+position = Vector2(-109, 15)
+
+[node name="child2" parent="." instance=ExtResource("5_h8h3e")]
+position = Vector2(-125, -95)
+
+[node name="child3" parent="." instance=ExtResource("5_h8h3e")]
+position = Vector2(187, 62)
+
+[node name="child4" parent="." instance=ExtResource("5_h8h3e")]
+position = Vector2(171, -78)
+
+[node name="child5" parent="." instance=ExtResource("5_h8h3e")]
+position = Vector2(102, -155)
+
+[node name="rug" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.882353)
+position = Vector2(686, -14)
+texture = ExtResource("6_ea2qa")
+
+[node name="controls2" type="Label" parent="."]
+visible = false
+offset_left = 225.0
+offset_top = -76.0
+offset_right = 508.0
+offset_bottom = -10.0
+theme_override_fonts/font = ExtResource("2_rt7i8")
+text = "Consume books ->
+to grow in power & life
+
+"
+horizontal_alignment = 1
+
+[node name="controls2" type="Label" parent="controls2"]
+layout_mode = 0
+offset_left = -66.0
+offset_top = 56.0
+offset_right = 266.0
+offset_bottom = 122.0
+theme_override_fonts/font = ExtResource("2_rt7i8")
+text = "Shooting & dashing use lives
+(you can retrieve them)"
+horizontal_alignment = 1
+
+[node name="controls3" type="Label" parent="."]
+offset_left = 655.0
+offset_top = -11.0
+offset_right = 952.0
+offset_bottom = 77.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("2_rt7i8")
+text = "Break 
+door 
+to 
+proceed ->
+"
+horizontal_alignment = 1
+
+[node name="child6" parent="." instance=ExtResource("5_h8h3e")]
+position = Vector2(-186, 96)
+
+[node name="child7" parent="." instance=ExtResource("5_h8h3e")]
+position = Vector2(-202, -14)
+
+[node name="child8" parent="." instance=ExtResource("5_h8h3e")]
+position = Vector2(110, 143)
+
+[node name="child9" parent="." instance=ExtResource("5_h8h3e")]
+position = Vector2(94, 3)

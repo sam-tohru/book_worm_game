@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://cl7culuu58lfv"]
+
+[ext_resource type="Script" path="res://world/buildings/building_area.gd" id="1_itt3o"]
+[ext_resource type="Script" path="res://world/buildings/buildings.gd" id="1_svd65"]
+[ext_resource type="Texture2D" uid="uid://be7t2okvs7rc4" path="res://world/sprites/shelf_full.png" id="3_vrpd5"]
+[ext_resource type="Texture2D" uid="uid://dnbqf8iy5g7hr" path="res://world/sprites/building_corner.png" id="4_twv0v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52q5t"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nid8n"]
+size = Vector2(36, 68)
+
+[node name="building_midLeft" type="StaticBody2D"]
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
+collision_mask = 19
+script = ExtResource("1_svd65")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 16.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0.654902, 0.243137, 0.172549, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_52q5t")
+
+[node name="building_area" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 17
+script = ExtResource("1_itt3o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="building_area"]
+shape = SubResource("RectangleShape2D_nid8n")
+debug_color = Color(0.933333, 0.25098, 0.203922, 0.419608)
+
+[node name="book_marker" type="Marker2D" parent="building_area"]
+position = Vector2(-30, -7.62939e-05)
+
+[node name="building_sprite1" type="Sprite2D" parent="." groups=["half_change"]]
+position = Vector2(0, 16)
+rotation = 1.5708
+texture = ExtResource("3_vrpd5")
+
+[node name="building_sprite2" type="Sprite2D" parent="." groups=["half_change"]]
+position = Vector2(0, -16)
+rotation = 1.5708
+texture = ExtResource("3_vrpd5")
+
+[node name="corner_sprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 16)
+texture = ExtResource("4_twv0v")
+
+[connection signal="body_entered" from="building_area" to="building_area" method="_on_body_entered"]

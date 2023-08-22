@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgyue2ftf8cym"]
+
+[ext_resource type="TileSet" uid="uid://feeksck78hsd" path="res://world/world_tilemap.tres" id="1_6x2rn"]
+[ext_resource type="Texture2D" uid="uid://e0kdabt23em" path="res://world/sprites/world_things/rug-under_pizza.png" id="2_7mb6r"]
+[ext_resource type="PackedScene" uid="uid://dlf3dvj61yqi4" path="res://world/levels/area_next.tscn" id="2_od0ei"]
+[ext_resource type="PackedScene" uid="uid://ceqb2s7bimhgr" path="res://world/pizza_table.tscn" id="4_s1nqj"]
+[ext_resource type="FontFile" uid="uid://ckxk3elimfey3" path="res://resources/fonts/Kaph-Regular.otf" id="6_uuplb"]
+[ext_resource type="PackedScene" uid="uid://kd5p3mwr045k" path="res://world/children/child.tscn" id="7_u1cqh"]
+[ext_resource type="PackedScene" uid="uid://qfyew5q7cv8d" path="res://enemies/melee/enemy_melee.tscn" id="7_uexld"]
+
+[node name="level_03" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+offset_left = -5984.0
+offset_top = -4003.0
+offset_right = 5657.0
+offset_bottom = 3746.0
+mouse_filter = 2
+color = Color(0.113725, 0.0862745, 0.0745098, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_6x2rn")
+format = 2
+layer_0/tile_data = PackedInt32Array(-131073, 2, 65536, -196609, 2, 65536, -262145, 2, 65536, -327681, 2, 65536, -393217, 2, 65536, -458753, 2, 65536, -524289, 2, 65536, 262143, 2, 65536, 327679, 2, 65536, 393215, 2, 65536, 458751, 2, 65536, 524287, 2, 65536, 589823, 2, 65536, 655359, 2, 65536, -589824, 2, 65536, -589823, 2, 65536, -589822, 2, 65536, -589821, 2, 65536, -589820, 2, 65536, -589819, 2, 65536, -589818, 2, 65536, -589817, 2, 65536, -589816, 2, 65536, -589815, 2, 65536, -589814, 2, 65536, -589813, 2, 65536, -589812, 2, 65536, -589811, 2, 65536, -589808, 2, 65536, -589807, 2, 65536, -589806, 2, 65536, -589805, 2, 65536, -589804, 2, 65536, 589824, 2, 65536, 589825, 2, 65536, 589826, 2, 65536, 589827, 2, 65536, 589828, 2, 65536, 589829, 2, 65536, 589830, 2, 65536, 589831, 2, 65536, 589832, 2, 65536, 589833, 2, 65536, 589834, 2, 65536, 589835, 2, 65536, 589836, 2, 65536, 589837, 2, 65536, 589838, 2, 65536, 589839, 2, 65536, 589840, 2, 65536, 589841, 2, 65536, 589842, 2, 65536, 589843, 2, 65536, 589844, 2, 65536, 589845, 2, 65536, 65535, 4, 131072, -196610, 2, 196608, -196611, 2, 196608, -196612, 2, 196608, -196613, 2, 196608, -131077, 2, 196608, -65541, 2, 196608, -5, 2, 196608, 65531, 2, 196608, 131067, 2, 196608, 196603, 2, 196608, 262139, 2, 196608, 327675, 2, 196608, 327676, 2, 196608, 327677, 2, 196608, 327678, 2, 196608, -393211, 0, 196608, -327675, 0, 196608, -262139, 0, 196608, -196603, 0, 196608, -131067, 0, 196608, 131077, 0, 196608, 196613, 0, 196608, 262149, 0, 196608, 327685, 0, 196608, 393221, 0, 196608, -393210, 0, 262144, -327674, 0, 262144, -262138, 0, 262144, -196602, 0, 262144, -131066, 0, 262144, 131078, 0, 262144, 196614, 0, 262144, 262150, 0, 262144, 327686, 0, 262144, 393222, 0, 262144, 131084, 0, 196608, 196620, 0, 196608, 262156, 0, 196608, 327692, 0, 196608, 393228, 0, 196608, 131085, 0, 262144, 196621, 0, 262144, 262157, 0, 262144, 327693, 0, 262144, 393229, 0, 262144, -589803, 2, 65536, -524267, 2, 65536, -458731, 2, 65536, -393195, 2, 65536, -327659, 2, 65536, -262123, 2, 65536, -196587, 2, 65536, 196629, 2, 65536, 262165, 2, 65536, 327701, 2, 65536, 393237, 2, 65536, 458773, 2, 65536, 524309, 2, 65536, 21, 4, 65536, -262122, 2, 196608, -262121, 2, 196608, -262120, 2, 196608, -262119, 2, 196608, -196583, 2, 196608, -131047, 2, 196608, -65511, 2, 196608, 25, 2, 196608, 65561, 2, 196608, 131097, 2, 196608, 196633, 2, 196608, 262169, 2, 196608, 262168, 2, 196608, 262167, 2, 196608, 262166, 2, 196608, -589810, 2, 65536, -589809, 2, 65536)
+
+[node name="Rug-underPizza" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(524, -116)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7mb6r")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_s1nqj")]
+position = Vector2(545, -134)
+
+[node name="area_next" parent="." groups=["2-1"] instance=ExtResource("2_od0ei")]
+position = Vector2(-981, 14)
+
+[node name="area_next2" parent="." groups=["2-3"] instance=ExtResource("2_od0ei")]
+position = Vector2(1651, 14)
+rotation = 0.0226893
+
+[node name="controls3" type="Label" parent="."]
+offset_left = 413.0
+offset_top = -241.0
+offset_right = 710.0
+offset_bottom = -153.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("6_uuplb")
+text = "Pizza party today 5pm
+"
+horizontal_alignment = 1
+
+[node name="child" parent="." instance=ExtResource("7_u1cqh")]
+position = Vector2(503, -92)
+rotation = -1.5708
+
+[node name="child2" parent="." instance=ExtResource("7_u1cqh")]
+position = Vector2(331, -161)
+rotation = -1.5708
+
+[node name="child3" parent="." instance=ExtResource("7_u1cqh")]
+position = Vector2(504, -187)
+rotation = -1.5708
+
+[node name="child4" parent="." instance=ExtResource("7_u1cqh")]
+position = Vector2(343, -7)
+rotation = -1.5708
+
+[node name="child5" parent="." instance=ExtResource("7_u1cqh")]
+position = Vector2(244, -38)
+rotation = -1.5708
+
+[node name="child6" parent="." instance=ExtResource("7_u1cqh")]
+position = Vector2(444, -112)
+rotation = -1.5708
+
+[node name="enemy_melee" parent="." instance=ExtResource("7_uexld")]
+position = Vector2(280, -54)
+
+[node name="enemy_melee2" parent="." instance=ExtResource("7_uexld")]
+position = Vector2(279, -105)
+rotation = 1.12574
+
+[node name="enemy_melee4" parent="." instance=ExtResource("7_uexld")]
+position = Vector2(356, -35)
+rotation = 1.12574
+
+[node name="enemy_melee5" parent="." instance=ExtResource("7_uexld")]
+position = Vector2(312, -151)
+rotation = 1.12574
+
+[node name="enemy_melee3" parent="." instance=ExtResource("7_uexld")]
+position = Vector2(364, -98)
+rotation = 2.51153
+FROZEN = true
