@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://liw0aq31kxa2"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_32q35"]
+[ext_resource type="PackedScene" uid="uid://bigfrcthsqmqp" path="res://menu/menu.tscn" id="2_86kbo"]
+[ext_resource type="PackedScene" uid="uid://clk22cgap8uq8" path="res://resources/sfx/sfx_main.tscn" id="3_4s768"]
+[ext_resource type="Script" path="res://main_area.gd" id="4_nhup5"]
+[ext_resource type="PackedScene" uid="uid://na4vunp373bk" path="res://world/levels/02_enemy/level_02.tscn" id="5_5ik1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfw7j"]
+size = Vector2(2195, 983)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_32q35")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+offset_left = -5984.0
+offset_top = -4003.0
+offset_right = 5657.0
+offset_bottom = 3746.0
+mouse_filter = 2
+color = Color(0.113725, 0.0862745, 0.0745098, 1)
+
+[node name="timers" type="Node" parent="."]
+
+[node name="player_rigid_timer" type="Timer" parent="timers"]
+wait_time = 4.0
+one_shot = true
+
+[node name="start_timer" type="Timer" parent="timers"]
+wait_time = 0.2
+autostart = true
+
+[node name="building_ani_timer" type="Timer" parent="timers"]
+wait_time = 0.4
+autostart = true
+
+[node name="new_life_timer" type="Timer" parent="timers"]
+wait_time = 0.2
+one_shot = true
+
+[node name="menu" parent="." instance=ExtResource("2_86kbo")]
+
+[node name="sfx_main" parent="." instance=ExtResource("3_4s768")]
+
+[node name="main_area" type="Area2D" parent="." groups=["debug_area"]]
+script = ExtResource("4_nhup5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="main_area"]
+position = Vector2(108.5, 167.5)
+shape = SubResource("RectangleShape2D_rfw7j")
+
+[node name="Marker2D" type="Marker2D" parent="main_area"]
+
+[node name="level_02" parent="." instance=ExtResource("5_5ik1d")]
+position = Vector2(-35, 0)
+
+[connection signal="timeout" from="timers/player_rigid_timer" to="." method="_on_player_rigid_timer_timeout"]
+[connection signal="timeout" from="timers/start_timer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="timers/building_ani_timer" to="." method="_on_building_ani_timer_timeout"]
+[connection signal="body_exited" from="main_area" to="main_area" method="_on_body_exited"]
