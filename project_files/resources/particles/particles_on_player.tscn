@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1nbtse5db7lu"]
+
+[ext_resource type="Script" path="res://resources/particles/particles_on_player.gd" id="1_r26v1"]
+
+[node name="particles_on_player" type="Node2D"]
+script = ExtResource("1_r26v1")
+
+[node name="sword_hit" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 250
+lifetime = 0.25
+one_shot = true
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 4.0
+gravity = Vector2(0, 0)
+radial_accel_min = 25.0
+radial_accel_max = 90.0
+tangential_accel_min = -250.0
+tangential_accel_max = 200.0
+scale_amount_max = 2.0

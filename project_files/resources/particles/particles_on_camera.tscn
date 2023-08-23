@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb1iq5ph26vk0"]
+
+[ext_resource type="Script" path="res://resources/particles/particles_on_camera.gd" id="1_hv1di"]
+
+[node name="particles_on_camera" type="Node2D"]
+script = ExtResource("1_hv1di")
+
+[node name="sword_hit" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 250
+lifetime = 0.25
+one_shot = true
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 4.0
+gravity = Vector2(0, 0)
+radial_accel_min = 25.0
+radial_accel_max = 90.0
+tangential_accel_min = -250.0
+tangential_accel_max = 200.0
+scale_amount_max = 2.0
+
+[node name="king_awoken_bg" type="CPUParticles2D" parent="."]
+position = Vector2(-2, -36)
+emitting = false
+amount = 52
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+gravity = Vector2(0, 0)
+scale_amount_min = 50.0
+scale_amount_max = 50.0
+
+[node name="king_awoken_timer" type="Timer" parent="."]
+wait_time = 4.0
