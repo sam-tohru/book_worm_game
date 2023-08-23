@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://bu0y38t6xvwbj"]
+
+[ext_resource type="Script" path="res://player/player_head.gd" id="1_fftwc"]
+[ext_resource type="PackedScene" uid="uid://dualcmxkok8n" path="res://main_camera.tscn" id="2_k0a8f"]
+[ext_resource type="PackedScene" uid="uid://8gsgax7wdsl7" path="res://player/body/player_body.tscn" id="4_wxp3k"]
+[ext_resource type="PackedScene" uid="uid://ckoymnlct4phi" path="res://player/other/attack_areas.tscn" id="5_smcic"]
+[ext_resource type="PackedScene" uid="uid://d2x3w2c4ugamv" path="res://player/other/main_area.tscn" id="6_k60ek"]
+[ext_resource type="PackedScene" uid="uid://dkqyp5ih16qix" path="res://player/head_sprite/head_sprite.tscn" id="7_21lhx"]
+[ext_resource type="PackedScene" uid="uid://b1nbtse5db7lu" path="res://resources/particles/particles_on_player.tscn" id="7_uad5j"]
+[ext_resource type="Texture2D" uid="uid://dos6hy22wg0tm" path="res://player/sprites/aim_arrow.png" id="8_wiad6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tafs5"]
+radius = 16.0
+
+[node name="player_head" type="CharacterBody2D" groups=["character_player", "player"]]
+collision_mask = 11
+script = ExtResource("1_fftwc")
+
+[node name="attack_areas" parent="." instance=ExtResource("5_smcic")]
+visible = false
+
+[node name="area" parent="." instance=ExtResource("6_k60ek")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tafs5")
+
+[node name="Camera2D" parent="." instance=ExtResource("2_k0a8f")]
+
+[node name="shoot_marker" type="Marker2D" parent="."]
+position = Vector2(39, 0)
+
+[node name="GrooveJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(-12, 1)
+node_a = NodePath("..")
+node_b = NodePath("../pivot_1/player_body")
+
+[node name="pivot_1" type="Node2D" parent="."]
+rotation = 0.371755
+
+[node name="player_body" parent="pivot_1" groups=["pivot_1"] instance=ExtResource("4_wxp3k")]
+position = Vector2(-26, 0)
+
+[node name="pivot_2" type="Node2D" parent="pivot_1/player_body" groups=["pivot_2"]]
+rotation = -0.652753
+
+[node name="player_body2" parent="pivot_1/player_body/pivot_2" groups=["block_body", "pivot_2"] instance=ExtResource("4_wxp3k")]
+position = Vector2(-26, 0)
+rotation = -1.5708
+
+[node name="GrooveJoint2D2" type="PinJoint2D" parent="pivot_1/player_body/pivot_2"]
+position = Vector2(-13, 1)
+node_a = NodePath("../..")
+node_b = NodePath("../player_body2")
+
+[node name="timers" type="Node" parent="."]
+
+[node name="snake_timer" type="Timer" parent="timers"]
+wait_time = 0.2
+autostart = true
+
+[node name="inv_timer" type="Timer" parent="timers"]
+autostart = true
+
+[node name="particles_on_player" parent="." instance=ExtResource("7_uad5j")]
+
+[node name="Sprite2D" parent="." instance=ExtResource("7_21lhx")]
+
+[node name="aim_arrow" type="Sprite2D" parent="Sprite2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.509804)
+show_behind_parent = true
+position = Vector2(33, 1)
+skew = -1.56907
+texture = ExtResource("8_wiad6")
+
+[connection signal="timeout" from="timers/snake_timer" to="." method="_on_snake_timer_timeout"]
+[connection signal="timeout" from="timers/inv_timer" to="." method="_on_inv_timer_timeout"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp2nd7w7sm2kv"]
+
+[ext_resource type="Texture2D" uid="uid://dpnqj1sgp1phb" path="res://resources/progress_bar/train_over.png" id="1_qdfus"]
+[ext_resource type="Texture2D" uid="uid://r7xyvi5pgry4" path="res://resources/progress_bar/train_prog.png" id="2_2iei2"]
+[ext_resource type="Script" path="res://enemies_killed.gd" id="3_cm8np"]
+
+[node name="TextureProgressBar" type="TextureProgressBar"]
+visible = false
+offset_left = -27.0
+offset_top = -84.0
+offset_right = 256.0
+offset_bottom = -44.0
+texture_over = ExtResource("1_qdfus")
+texture_progress = ExtResource("2_2iei2")
+script = ExtResource("3_cm8np")

@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2q1id0djrl3"]
+
+[ext_resource type="Script" path="res://player/player_head.gd" id="1_q2f80"]
+[ext_resource type="PackedScene" uid="uid://ckoymnlct4phi" path="res://player/other/attack_areas.tscn" id="4_w28r1"]
+[ext_resource type="PackedScene" uid="uid://dualcmxkok8n" path="res://main_camera.tscn" id="5_ija5l"]
+[ext_resource type="PackedScene" uid="uid://d2x3w2c4ugamv" path="res://player/other/main_area.tscn" id="5_wcd44"]
+[ext_resource type="PackedScene" uid="uid://dkqyp5ih16qix" path="res://player/head_sprite/head_sprite.tscn" id="6_gmhc0"]
+[ext_resource type="PackedScene" uid="uid://b1nbtse5db7lu" path="res://resources/particles/particles_on_player.tscn" id="6_mpang"]
+[ext_resource type="Texture2D" uid="uid://dos6hy22wg0tm" path="res://player/sprites/aim_arrow.png" id="7_jek2v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tafs5"]
+radius = 16.0
+
+[node name="player_head" type="CharacterBody2D" groups=["character_player", "player"]]
+collision_mask = 11
+script = ExtResource("1_q2f80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tafs5")
+
+[node name="Camera2D" parent="." instance=ExtResource("5_ija5l")]
+
+[node name="shoot_marker" type="Marker2D" parent="."]
+position = Vector2(39, 0)
+
+[node name="timers" type="Node" parent="."]
+
+[node name="snake_timer" type="Timer" parent="timers"]
+wait_time = 0.2
+autostart = true
+
+[node name="inv_timer" type="Timer" parent="timers"]
+autostart = true
+
+[node name="attack_areas" parent="." instance=ExtResource("4_w28r1")]
+visible = false
+
+[node name="area" parent="." instance=ExtResource("5_wcd44")]
+visible = false
+
+[node name="particles_on_player" parent="." instance=ExtResource("6_mpang")]
+
+[node name="Sprite2D" parent="." instance=ExtResource("6_gmhc0")]
+
+[node name="aim_arrow" type="Sprite2D" parent="Sprite2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.509804)
+show_behind_parent = true
+position = Vector2(33, 1)
+skew = -1.56907
+texture = ExtResource("7_jek2v")
+
+[connection signal="timeout" from="timers/snake_timer" to="." method="_on_snake_timer_timeout"]
+[connection signal="timeout" from="timers/inv_timer" to="." method="_on_inv_timer_timeout"]

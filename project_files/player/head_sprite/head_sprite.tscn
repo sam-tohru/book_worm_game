@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkqyp5ih16qix"]
+
+[ext_resource type="Script" path="res://player/head_sprite/head_sprite.gd" id="1_bolty"]
+[ext_resource type="Texture2D" uid="uid://d2js5mfg8oqo4" path="res://player/head_sprite/player_head_close.png" id="1_madcl"]
+[ext_resource type="Texture2D" uid="uid://c77rb1m3vypy5" path="res://player/head_sprite/player_head_open.png" id="2_lfp3f"]
+[ext_resource type="Texture2D" uid="uid://dl8xdaogjlkkt" path="res://player/head_sprite/player_eating.png" id="3_hnfpe"]
+[ext_resource type="Texture2D" uid="uid://va1e4p4a8kw8" path="res://player/head_sprite/player_eatingBook.png" id="5_1evty"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3vda"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_madcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lfp3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hnfpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1evty")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Sprite2D" type="Node2D"]
+script = ExtResource("1_bolty")
+
+[node name="face" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i3vda")
+
+[node name="paper_parts" type="CPUParticles2D" parent="."]
+position = Vector2(9, 5)
+emitting = false
+amount = 16
+lifetime = 0.2
+explosiveness = 1.0
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 80.0
+scale_amount_max = 2.0
+color = Color(0.85098, 0.8, 0.764706, 1)

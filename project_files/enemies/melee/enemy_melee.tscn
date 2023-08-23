@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://qfyew5q7cv8d"]
+
+[ext_resource type="Script" path="res://enemies/melee/enemy_melee.gd" id="1_wa2lg"]
+[ext_resource type="Texture2D" uid="uid://d4nnbbcu46bvi" path="res://enemies/sprites/mel_man.png" id="2_wwyd4"]
+[ext_resource type="Texture2D" uid="uid://6n3bd15sup72" path="res://enemies/sprites/mel_sword.png" id="3_4te00"]
+[ext_resource type="Texture2D" uid="uid://bkj24kyra1bun" path="res://enemies/sprites/mel_arms.png" id="4_3vbs1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ln7d8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayk64"]
+size = Vector2(34.521, 9.56789)
+
+[sub_resource type="Gradient" id="Gradient_0m1cb"]
+offsets = PackedFloat32Array(0.0849057, 0.721698)
+colors = PackedColorArray(0.877348, 0.834496, 0.806971, 1, 0.878431, 0.835294, 0.807843, 0.384314)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpkk1"]
+size = Vector2(398, 206)
+
+[node name="enemy_melee" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 25
+script = ExtResource("1_wa2lg")
+
+[node name="particles_below" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 0)
+shape = SubResource("CapsuleShape2D_ln7d8")
+
+[node name="sprite_body" type="Sprite2D" parent="."]
+position = Vector2(16, 1)
+texture = ExtResource("2_wwyd4")
+
+[node name="sword_body" type="Area2D" parent="."]
+position = Vector2(3, 0)
+rotation = 0.767945
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sword_body"]
+position = Vector2(26.5232, 0.553428)
+shape = SubResource("RectangleShape2D_ayk64")
+
+[node name="particles_swing" type="CPUParticles2D" parent="sword_body"]
+visible = false
+position = Vector2(26.0479, 6.8196)
+rotation = -0.0698133
+amount = 512
+speed_scale = 4.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(18, 2)
+gravity = Vector2(0, 8)
+color_ramp = SubResource("Gradient_0m1cb")
+
+[node name="sprite_sword" type="Sprite2D" parent="sword_body"]
+position = Vector2(13.9098, 0.719812)
+texture = ExtResource("3_4te00")
+flip_v = true
+
+[node name="hit_marker" type="Marker2D" parent="sword_body"]
+position = Vector2(40.3853, -4.24558)
+
+[node name="sprite_arms" type="Sprite2D" parent="."]
+position = Vector2(16, 1)
+texture = ExtResource("4_3vbs1")
+
+[node name="special_cooldown" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="ani_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="walkthrough_timer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_wpkk1")
+
+[connection signal="body_entered" from="sword_body" to="." method="_on_sword_body_body_entered"]
+[connection signal="timeout" from="special_cooldown" to="." method="_on_special_cooldown_timeout"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="ani_timer" to="." method="_on_ani_timer_timeout"]
+[connection signal="timeout" from="walkthrough_timer" to="." method="_on_walkthrough_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

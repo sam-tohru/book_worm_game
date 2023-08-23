@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://dll3385qsyta5"]
+
+[ext_resource type="Script" path="res://enemies/king/king.gd" id="1_k5qjt"]
+[ext_resource type="Texture2D" uid="uid://w881sbkb8jyd" path="res://enemies/sprites/King_bod.png" id="2_a11kj"]
+[ext_resource type="Texture2D" uid="uid://dun7gp77aip2i" path="res://enemies/sprites/King_sword.png" id="3_lqmhd"]
+[ext_resource type="Texture2D" uid="uid://cjewyo44boawr" path="res://enemies/sprites/King_arms.png" id="4_v8vtw"]
+[ext_resource type="Texture2D" uid="uid://cgawlx2vnmos3" path="res://resources/particles/circle-export.png" id="4_y5hkp"]
+[ext_resource type="PackedScene" uid="uid://ccd6sevfyp7qv" path="res://animations/won.tscn" id="6_kiugm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db8y0"]
+size = Vector2(1435, 296.667)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ln7d8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayk64"]
+size = Vector2(41.2759, 12.0747)
+
+[sub_resource type="Gradient" id="Gradient_0m1cb"]
+offsets = PackedFloat32Array(0.0849057, 0.745283)
+colors = PackedColorArray(0.654902, 0.243137, 0.172549, 0.411765, 0.772549, 0.505882, 0.160784, 0.172549)
+
+[sub_resource type="Curve" id="Curve_xmje2"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.246914, 1), 0.0, 0.0, 0, 0, Vector2(0.748971, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="king" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(1.2, 1.2)
+collision_layer = 2
+collision_mask = 25
+script = ExtResource("1_k5qjt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-106.667, 0)
+shape = SubResource("RectangleShape2D_db8y0")
+
+[node name="particles_below" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 0)
+shape = SubResource("CapsuleShape2D_ln7d8")
+
+[node name="sprite_body" type="Sprite2D" parent="."]
+position = Vector2(16, 1)
+texture = ExtResource("2_a11kj")
+
+[node name="sword_body" type="Area2D" parent="."]
+position = Vector2(4.16667, 1.78814e-07)
+rotation = 0.767945
+scale = Vector2(1.2, 1.2)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sword_body"]
+position = Vector2(25.5305, 1.108)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_ayk64")
+
+[node name="particles_swing" type="CPUParticles2D" parent="sword_body"]
+visible = false
+position = Vector2(-18.8792, -12.3522)
+rotation = -0.0698133
+amount = 512
+speed_scale = 4.0
+local_coords = true
+emission_shape = 4
+emission_points = PackedVector2Array(27, 10, 27, 11, 28, 10, 28, 11, 28, 19, 28, 20, 29, 10, 29, 11, 29, 19, 29, 20, 30, 10, 30, 11, 30, 19, 30, 20, 31, 10, 31, 11, 31, 19, 31, 20, 32, 10, 32, 11, 32, 19, 32, 20, 33, 10, 33, 11, 33, 19, 33, 20, 34, 10, 34, 11, 34, 19, 34, 20, 35, 10, 35, 11, 35, 19, 35, 20, 36, 10, 36, 11, 36, 19, 36, 20, 37, 10, 37, 11, 37, 19, 37, 20, 38, 10, 38, 11, 38, 19, 38, 20, 39, 10, 39, 11, 39, 19, 39, 20, 40, 10, 40, 11, 40, 19, 40, 20, 41, 10, 41, 11, 41, 19, 41, 20, 42, 10, 42, 11, 42, 12, 42, 19, 42, 20, 43, 11, 43, 12, 43, 19, 43, 20, 44, 11, 44, 12, 44, 19, 44, 20, 45, 11, 45, 12, 45, 19, 45, 20, 46, 11, 46, 12, 46, 19, 46, 20, 47, 11, 47, 12, 47, 19, 47, 20, 48, 11, 48, 12, 48, 19, 48, 20, 49, 11, 49, 12, 49, 19, 49, 20, 50, 11, 50, 12, 50, 19, 50, 20, 51, 11, 51, 12, 51, 19, 51, 20, 52, 11, 52, 12, 52, 19, 52, 20, 53, 11, 53, 12, 53, 19, 53, 20, 54, 11, 54, 12, 54, 19, 54, 20, 55, 11, 55, 12, 55, 13, 55, 19, 55, 20, 56, 12, 56, 13, 56, 19, 56, 20, 57, 12, 57, 13, 57, 19, 57, 20, 58, 12, 58, 13, 58, 19, 58, 20, 59, 12, 59, 13, 59, 19, 59, 20, 60, 12, 60, 13, 60, 19, 60, 20, 61, 13, 61, 14, 61, 18, 61, 19, 62, 14, 62, 15, 62, 16, 62, 17, 62, 18, 63, 15, 63, 16, 63, 17)
+emission_colors = PackedColorArray()
+gravity = Vector2(0, 8)
+color_ramp = SubResource("Gradient_0m1cb")
+
+[node name="sprite_sword" type="Sprite2D" parent="sword_body"]
+position = Vector2(13.9098, 0.719812)
+texture = ExtResource("3_lqmhd")
+flip_v = true
+
+[node name="particles_king_sword" type="CPUParticles2D" parent="sword_body/sprite_sword"]
+show_behind_parent = true
+position = Vector2(-32.789, -13.072)
+rotation = -0.0523599
+amount = 512
+speed_scale = 4.0
+local_coords = true
+texture = ExtResource("4_y5hkp")
+emission_shape = 4
+emission_points = PackedVector2Array(27, 10, 27, 11, 28, 10, 28, 11, 28, 19, 28, 20, 29, 10, 29, 11, 29, 19, 29, 20, 30, 10, 30, 11, 30, 19, 30, 20, 31, 10, 31, 11, 31, 19, 31, 20, 32, 10, 32, 11, 32, 19, 32, 20, 33, 10, 33, 11, 33, 19, 33, 20, 34, 10, 34, 11, 34, 19, 34, 20, 35, 10, 35, 11, 35, 19, 35, 20, 36, 10, 36, 11, 36, 19, 36, 20, 37, 10, 37, 11, 37, 19, 37, 20, 38, 10, 38, 11, 38, 19, 38, 20, 39, 10, 39, 11, 39, 19, 39, 20, 40, 10, 40, 11, 40, 19, 40, 20, 41, 10, 41, 11, 41, 19, 41, 20, 42, 10, 42, 11, 42, 12, 42, 19, 42, 20, 43, 11, 43, 12, 43, 19, 43, 20, 44, 11, 44, 12, 44, 19, 44, 20, 45, 11, 45, 12, 45, 19, 45, 20, 46, 11, 46, 12, 46, 19, 46, 20, 47, 11, 47, 12, 47, 19, 47, 20, 48, 11, 48, 12, 48, 19, 48, 20, 49, 11, 49, 12, 49, 19, 49, 20, 50, 11, 50, 12, 50, 19, 50, 20, 51, 11, 51, 12, 51, 19, 51, 20, 52, 11, 52, 12, 52, 19, 52, 20, 53, 11, 53, 12, 53, 19, 53, 20, 54, 11, 54, 12, 54, 19, 54, 20, 55, 11, 55, 12, 55, 13, 55, 19, 55, 20, 56, 12, 56, 13, 56, 19, 56, 20, 57, 12, 57, 13, 57, 19, 57, 20, 58, 12, 58, 13, 58, 19, 58, 20, 59, 12, 59, 13, 59, 19, 59, 20, 60, 12, 60, 13, 60, 19, 60, 20, 61, 13, 61, 14, 61, 18, 61, 19, 62, 14, 62, 15, 62, 16, 62, 17, 62, 18, 63, 15, 63, 16, 63, 17)
+emission_colors = PackedColorArray()
+gravity = Vector2(0, -8)
+radial_accel_min = 20.0
+radial_accel_max = 30.0
+scale_amount_min = 0.05
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_xmje2")
+color_ramp = SubResource("Gradient_0m1cb")
+
+[node name="hit_marker" type="Marker2D" parent="sword_body"]
+position = Vector2(40.3853, -4.24558)
+
+[node name="sprite_arms" type="Sprite2D" parent="."]
+position = Vector2(16, 1)
+texture = ExtResource("4_v8vtw")
+
+[node name="special_cooldown" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="ani_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="inv_timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[node name="won" parent="." instance=ExtResource("6_kiugm")]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="sword_body" to="." method="_on_sword_body_body_entered"]
+[connection signal="timeout" from="special_cooldown" to="." method="_on_special_cooldown_timeout"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="ani_timer" to="." method="_on_ani_timer_timeout"]
+[connection signal="timeout" from="inv_timer" to="." method="_on_inv_timer_timeout"]

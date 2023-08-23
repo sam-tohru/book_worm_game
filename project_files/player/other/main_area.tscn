@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2x3w2c4ugamv"]
+
+[ext_resource type="Script" path="res://player/other/main_area.gd" id="1_8whc5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjboc"]
+radius = 24.0
+
+[node name="area" type="Area2D" groups=["player"]]
+collision_mask = 11
+script = ExtResource("1_8whc5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mjboc")
+
+[node name="bug_area_timer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="bug_area_timer" to="." method="_on_bug_area_timer_timeout"]

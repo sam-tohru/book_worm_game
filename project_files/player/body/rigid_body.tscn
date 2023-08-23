@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://0fcsxamc2dd6"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://b3yfw2oikgoyq" path="res://player/physics_player.tres" id="1_5irl2"]
+[ext_resource type="Script" path="res://player/body/rigid_body.gd" id="2_g8p0h"]
+[ext_resource type="Texture2D" uid="uid://c2hmkpbfvpbfo" path="res://player/sprites/player_body.png" id="2_nicrm"]
+[ext_resource type="PackedScene" uid="uid://d2x3w2c4ugamv" path="res://player/other/main_area.tscn" id="4_004pc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_801w6"]
+radius = 16.0
+
+[node name="rigid_body" type="RigidBody2D" groups=["body", "rigid", "rigid_body"]]
+collision_mask = 27
+physics_material_override = ExtResource("1_5irl2")
+script = ExtResource("2_g8p0h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_801w6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nicrm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[node name="area" parent="." instance=ExtResource("4_004pc")]
+
+[node name="life_timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="life_timer" to="." method="_on_life_timer_timeout"]

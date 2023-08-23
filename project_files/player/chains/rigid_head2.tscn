@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://6su457qwvcon"]
+
+[ext_resource type="Script" path="res://player/rigid_player.gd" id="1_lrvnd"]
+[ext_resource type="PackedScene" uid="uid://ckoymnlct4phi" path="res://player/other/attack_areas.tscn" id="2_p8rj2"]
+[ext_resource type="PackedScene" uid="uid://d2x3w2c4ugamv" path="res://player/other/main_area.tscn" id="3_5efly"]
+[ext_resource type="PackedScene" uid="uid://dualcmxkok8n" path="res://main_camera.tscn" id="4_oqkko"]
+[ext_resource type="Texture2D" uid="uid://c2hmkpbfvpbfo" path="res://player/sprites/player_body.png" id="5_348i1"]
+[ext_resource type="PackedScene" uid="uid://dkqyp5ih16qix" path="res://player/head_sprite/head_sprite.tscn" id="7_nwjwn"]
+[ext_resource type="Texture2D" uid="uid://dos6hy22wg0tm" path="res://player/sprites/aim_arrow.png" id="7_od5r2"]
+[ext_resource type="PackedScene" uid="uid://b1nbtse5db7lu" path="res://resources/particles/particles_on_player.tscn" id="8_c0h6q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tafs5"]
+radius = 16.0
+
+[node name="rigid_player" type="RigidBody2D" groups=["player", "rigid", "rigid_player"]]
+collision_mask = 11
+script = ExtResource("1_lrvnd")
+
+[node name="attack_areas" parent="." instance=ExtResource("2_p8rj2")]
+
+[node name="area" parent="." instance=ExtResource("3_5efly")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tafs5")
+
+[node name="Camera2D" parent="." instance=ExtResource("4_oqkko")]
+
+[node name="shoot_marker" type="Marker2D" parent="."]
+position = Vector2(39, 0)
+
+[node name="pivot_1" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="pivot_1"]
+position = Vector2(-28, 0)
+texture = ExtResource("5_348i1")
+
+[node name="GrooveJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(-13, 0)
+rotation = 1.5708
+node_a = NodePath("..")
+
+[node name="timers" type="Node" parent="."]
+
+[node name="snake_timer" type="Timer" parent="timers"]
+wait_time = 0.2
+autostart = true
+
+[node name="inv_timer" type="Timer" parent="timers"]
+autostart = true
+
+[node name="rigid_timer" type="Timer" parent="timers"]
+one_shot = true
+autostart = true
+
+[node name="particles_on_player" parent="." instance=ExtResource("8_c0h6q")]
+
+[node name="Sprite2D" parent="." instance=ExtResource("7_nwjwn")]
+
+[node name="aim_arrow" type="Sprite2D" parent="Sprite2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.509804)
+show_behind_parent = true
+position = Vector2(33, 1)
+skew = -1.56907
+texture = ExtResource("7_od5r2")
+
+[connection signal="timeout" from="timers/snake_timer" to="." method="_on_snake_timer_timeout"]
+[connection signal="timeout" from="timers/inv_timer" to="." method="_on_inv_timer_timeout"]
+[connection signal="timeout" from="timers/rigid_timer" to="." method="_on_rigid_timer_timeout"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://crbc72okwlsjq"]
+
+[ext_resource type="Texture2D" uid="uid://c2hmkpbfvpbfo" path="res://player/sprites/player_body.png" id="1_kigys"]
+
+[node name="Sprite2D" type="Node2D"]
+
+[node name="body" type="Sprite2D" parent="."]
+texture = ExtResource("1_kigys")
+
+[node name="paper_parts" type="CPUParticles2D" parent="."]
+position = Vector2(9, 5)
+emitting = false
+amount = 16
+lifetime = 0.2
+explosiveness = 1.0
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 80.0
+scale_amount_max = 2.0
+color = Color(0.85098, 0.8, 0.764706, 1)

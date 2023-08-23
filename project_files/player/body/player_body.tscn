@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://8gsgax7wdsl7"]
+
+[ext_resource type="Script" path="res://player/body/player_body.gd" id="1_r1pi0"]
+[ext_resource type="Texture2D" uid="uid://c2hmkpbfvpbfo" path="res://player/sprites/player_body.png" id="2_hfhlv"]
+[ext_resource type="PackedScene" uid="uid://ckoymnlct4phi" path="res://player/other/attack_areas.tscn" id="3_ljkiq"]
+[ext_resource type="PackedScene" uid="uid://d2x3w2c4ugamv" path="res://player/other/main_area.tscn" id="4_r41kj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_801w6"]
+radius = 16.0
+
+[node name="player_body" type="CharacterBody2D" groups=["player", "player_body"]]
+collision_layer = 16
+collision_mask = 26
+script = ExtResource("1_r1pi0")
+
+[node name="area" parent="." instance=ExtResource("4_r41kj")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_801w6")
+
+[node name="attack_areas" parent="." instance=ExtResource("3_ljkiq")]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hfhlv")

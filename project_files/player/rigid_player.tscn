@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://ibx4r7jebovm"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://b3yfw2oikgoyq" path="res://player/physics_player.tres" id="1_aotgg"]
+[ext_resource type="Script" path="res://player/rigid_player.gd" id="1_bnbd2"]
+[ext_resource type="PackedScene" uid="uid://dualcmxkok8n" path="res://main_camera.tscn" id="2_vj2wk"]
+[ext_resource type="PackedScene" uid="uid://d2x3w2c4ugamv" path="res://player/other/main_area.tscn" id="5_7baah"]
+[ext_resource type="PackedScene" uid="uid://dkqyp5ih16qix" path="res://player/head_sprite/head_sprite.tscn" id="5_n5pil"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tafs5"]
+radius = 16.0
+
+[node name="rigid_player" type="RigidBody2D" groups=["player", "rigid", "rigid_player"]]
+collision_mask = 11
+physics_material_override = ExtResource("1_aotgg")
+script = ExtResource("1_bnbd2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tafs5")
+
+[node name="Camera2D" parent="." instance=ExtResource("2_vj2wk")]
+
+[node name="shoot_marker" type="Marker2D" parent="."]
+position = Vector2(39, 0)
+
+[node name="area" parent="." instance=ExtResource("5_7baah")]
+
+[node name="rigid_timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Sprite2D" parent="." instance=ExtResource("5_n5pil")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="rigid_timer" to="." method="_on_rigid_timer_timeout"]
