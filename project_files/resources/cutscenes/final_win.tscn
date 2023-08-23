@@ -1,0 +1,178 @@
+[gd_scene load_steps=20 format=3 uid="uid://c7c43xnygoa7l"]
+
+[ext_resource type="Script" path="res://resources/cutscenes/final_win.gd" id="1_fsn63"]
+[ext_resource type="PackedScene" uid="uid://dualcmxkok8n" path="res://main_camera.tscn" id="2_jox88"]
+[ext_resource type="Texture2D" uid="uid://cr2gwvqa778fb" path="res://resources/cutscenes/sprites/intro_00_empty.png" id="3_38byn"]
+[ext_resource type="Texture2D" uid="uid://cses0pkj3pxiu" path="res://resources/cutscenes/sprites/intro_01_people.png" id="4_ri3pb"]
+[ext_resource type="Texture2D" uid="uid://b1622fqq8kp6l" path="res://resources/cutscenes/sprites/intro_02_eat.png" id="5_vhwyd"]
+[ext_resource type="Texture2D" uid="uid://dd3vpbte1ane5" path="res://resources/cutscenes/sprites/intro_04_old.png" id="6_qqxly"]
+[ext_resource type="Texture2D" uid="uid://g3b84aqovwyp" path="res://resources/cutscenes/sprites/intro_03_burst_old.png" id="7_okxid"]
+[ext_resource type="Texture2D" uid="uid://blau8u4bx2u74" path="res://resources/cutscenes/sprites/intro_05_kid_talks.png" id="8_sxem3"]
+[ext_resource type="Texture2D" uid="uid://l7d0l5ib1igq" path="res://resources/cutscenes/sprites/intro_06_wht worm.png" id="9_0mkms"]
+[ext_resource type="Texture2D" uid="uid://b85v8evkqv4ix" path="res://resources/cutscenes/sprites/final_01.png" id="9_gw7pq"]
+[ext_resource type="Texture2D" uid="uid://be7t2okvs7rc4" path="res://world/sprites/shelf_full.png" id="10_npj7e"]
+[ext_resource type="Texture2D" uid="uid://jcbpxypma113" path="res://world/sprites/book_pickup.png" id="11_eurn0"]
+[ext_resource type="PackedScene" uid="uid://dkqyp5ih16qix" path="res://player/head_sprite/head_sprite.tscn" id="12_c1f1x"]
+[ext_resource type="PackedScene" uid="uid://crbc72okwlsjq" path="res://player/head_sprite/body_sprite.tscn" id="13_gtlrj"]
+[ext_resource type="FontFile" uid="uid://ckxk3elimfey3" path="res://resources/fonts/Kaph-Regular.otf" id="14_5gqvy"]
+[ext_resource type="AudioStream" uid="uid://cfei723eg5b4m" path="res://resources/cutscenes/final_audio/final_0.wav" id="14_klb1a"]
+[ext_resource type="AudioStream" uid="uid://c1gg8as48r4vp" path="res://resources/cutscenes/final_audio/final_1.wav" id="15_4cgbn"]
+[ext_resource type="AudioStream" uid="uid://bh0shgquqkwf6" path="res://resources/cutscenes/final_audio/final_2.wav" id="16_3b61t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_earg7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_38byn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ri3pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vhwyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qqxly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_okxid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sxem3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0mkms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gw7pq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="final" type="Node2D"]
+script = ExtResource("1_fsn63")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+offset_left = -5984.0
+offset_top = -4003.0
+offset_right = 5657.0
+offset_bottom = 3746.0
+mouse_filter = 2
+color = Color(0.113725, 0.0862745, 0.0745098, 1)
+
+[node name="Camera2D" parent="." instance=ExtResource("2_jox88")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_earg7")
+frame = 7
+
+[node name="shelves" type="Node2D" parent="."]
+visible = false
+
+[node name="ShelfFull" type="Sprite2D" parent="shelves"]
+position = Vector2(71, 56)
+scale = Vector2(3.375, 3.6875)
+texture = ExtResource("10_npj7e")
+
+[node name="BookPickup" type="Sprite2D" parent="shelves"]
+position = Vector2(67, 135)
+texture = ExtResource("11_eurn0")
+
+[node name="BookPickup2" type="Sprite2D" parent="shelves"]
+position = Vector2(98, 110)
+texture = ExtResource("11_eurn0")
+
+[node name="BookPickup3" type="Sprite2D" parent="shelves"]
+position = Vector2(102, 147)
+texture = ExtResource("11_eurn0")
+
+[node name="BookPickup4" type="Sprite2D" parent="shelves"]
+position = Vector2(-72, 111)
+texture = ExtResource("11_eurn0")
+
+[node name="ShelfFull2" type="Sprite2D" parent="shelves"]
+position = Vector2(-54, 55)
+scale = Vector2(3.375, 3.6875)
+texture = ExtResource("10_npj7e")
+
+[node name="Marker2D" type="Marker2D" parent="shelves"]
+position = Vector2(156, -225)
+
+[node name="head_sprite" parent="." instance=ExtResource("12_c1f1x")]
+visible = false
+position = Vector2(27, 85)
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" parent="head_sprite" instance=ExtResource("13_gtlrj")]
+visible = false
+position = Vector2(-21, 13.5)
+
+[node name="Sprite2D2" parent="head_sprite" instance=ExtResource("13_gtlrj")]
+visible = false
+position = Vector2(-44, 16.5)
+
+[node name="timers" type="Node" parent="."]
+
+[node name="eat_timer" type="Timer" parent="timers"]
+
+[node name="eat_animation_timer" type="Timer" parent="timers"]
+wait_time = 0.25
+one_shot = true
+
+[node name="skip_timer" type="Timer" parent="timers"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="ground_sprites" type="Node2D" parent="."]
+
+[node name="skip" type="Label" parent="."]
+visible = false
+offset_left = -305.0
+offset_top = 129.0
+offset_right = -49.0
+offset_bottom = 195.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("14_5gqvy")
+text = "(press 'Space' to skip)
+"
+horizontal_alignment = 1
+
+[node name="subs" type="Label" parent="."]
+offset_left = -311.0
+offset_top = 149.0
+offset_right = -86.0
+offset_bottom = 215.0
+scale = Vector2(0.85, 0.85)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("14_5gqvy")
+text = "Left click -> shoot
+
+"
+
+[node name="lines" type="Node" parent="."]
+
+[node name="0_darkage" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("14_klb1a")
+volume_db = -1.0
+
+[node name="1_kid" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("15_4cgbn")
+volume_db = -1.0
+
+[node name="2_urbanmyth" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("16_3b61t")
+volume_db = -1.0
+
+[connection signal="timeout" from="timers/eat_timer" to="." method="_on_eat_timer_timeout"]
+[connection signal="timeout" from="timers/skip_timer" to="." method="_on_skip_timer_timeout"]
+[connection signal="finished" from="lines/0_darkage" to="." method="_on_0_darkage_finished"]
+[connection signal="finished" from="lines/1_kid" to="." method="_on_1_kid_finished"]
+[connection signal="finished" from="lines/2_urbanmyth" to="." method="_on_2_urbanmyth_finished"]

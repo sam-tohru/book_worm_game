@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://crxuio24318by"]
+
+[ext_resource type="Script" path="res://resources/cutscenes/king_cutscene/king_cutscene.gd" id="1_38100"]
+[ext_resource type="PackedScene" uid="uid://dualcmxkok8n" path="res://main_camera.tscn" id="1_essuj"]
+[ext_resource type="Texture2D" uid="uid://bmncnerlsh0b" path="res://resources/cutscenes/king_cutscene/king.png" id="2_tpujd"]
+[ext_resource type="FontFile" uid="uid://ckxk3elimfey3" path="res://resources/fonts/Kaph-Regular.otf" id="3_kcnl6"]
+[ext_resource type="Texture2D" uid="uid://bsf534ypa0eqf" path="res://resources/cutscenes/king_cutscene/king_line1.png" id="4_bp2r5"]
+[ext_resource type="Texture2D" uid="uid://dpbhoamexipnx" path="res://resources/cutscenes/king_cutscene/king_line2.png" id="5_1m0pa"]
+[ext_resource type="AudioStream" uid="uid://b81n2fpdge1yj" path="res://resources/cutscenes/king_cutscene/king_charles.wav" id="7_mebn0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8dv3w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_bp2r5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1m0pa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="king_cutscene" type="Node2D"]
+script = ExtResource("1_38100")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -325.0
+offset_top = -185.0
+offset_right = 324.0
+offset_bottom = 184.0
+color = Color(0.2, 0.160784, 0.137255, 1)
+
+[node name="Camera2D" parent="." instance=ExtResource("1_essuj")]
+
+[node name="sprite_king" type="Sprite2D" parent="."]
+position = Vector2(-173.8, 2)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_tpujd")
+
+[node name="lines_sprites" type="AnimatedSprite2D" parent="sprite_king"]
+position = Vector2(390, -135)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8dv3w")
+
+[node name="Timer" type="Timer" parent="sprite_king/lines_sprites"]
+wait_time = 0.2
+autostart = true
+
+[node name="king_label" type="Label" parent="."]
+offset_left = -26.0
+offset_top = -82.0
+offset_right = 421.0
+offset_bottom = -16.0
+theme_override_fonts/font = ExtResource("3_kcnl6")
+text = "King Charles
+(he is very inbred)"
+horizontal_alignment = 1
+
+[node name="life_timer" type="Timer" parent="."]
+wait_time = 5.5
+one_shot = true
+autostart = true
+
+[node name="line" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_mebn0")
+volume_db = -4.0
+
+[node name="subs" type="Label" parent="."]
+offset_left = -144.0
+offset_top = 137.0
+offset_right = 391.0
+offset_bottom = 203.0
+scale = Vector2(0.85, 0.85)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_kcnl6")
+text = "I King Charles will smite you, you foul beast!
+
+"
+
+[node name="tween_timer" type="Timer" parent="."]
+wait_time = 1.1
+autostart = true
+
+[node name="skip_timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="sprite_king/lines_sprites/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="life_timer" to="." method="_on_life_timer_timeout"]
+[connection signal="timeout" from="tween_timer" to="." method="_on_tween_timer_timeout"]
+[connection signal="timeout" from="skip_timer" to="." method="_on_skip_timer_timeout"]

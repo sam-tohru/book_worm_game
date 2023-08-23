@@ -1,0 +1,208 @@
+[gd_scene load_steps=28 format=3 uid="uid://cyfifch84abdo"]
+
+[ext_resource type="Script" path="res://resources/cutscenes/intro.gd" id="1_oi6jk"]
+[ext_resource type="PackedScene" uid="uid://dualcmxkok8n" path="res://main_camera.tscn" id="1_x4oxy"]
+[ext_resource type="Texture2D" uid="uid://cr2gwvqa778fb" path="res://resources/cutscenes/sprites/intro_00_empty.png" id="2_lu8t1"]
+[ext_resource type="Texture2D" uid="uid://cses0pkj3pxiu" path="res://resources/cutscenes/sprites/intro_01_people.png" id="3_o37fj"]
+[ext_resource type="Texture2D" uid="uid://b1622fqq8kp6l" path="res://resources/cutscenes/sprites/intro_02_eat.png" id="4_eg3cj"]
+[ext_resource type="PackedScene" uid="uid://dkqyp5ih16qix" path="res://player/head_sprite/head_sprite.tscn" id="5_fbsu1"]
+[ext_resource type="Texture2D" uid="uid://dd3vpbte1ane5" path="res://resources/cutscenes/sprites/intro_04_old.png" id="6_bypa2"]
+[ext_resource type="Texture2D" uid="uid://g3b84aqovwyp" path="res://resources/cutscenes/sprites/intro_03_burst_old.png" id="6_siowg"]
+[ext_resource type="PackedScene" uid="uid://crbc72okwlsjq" path="res://player/head_sprite/body_sprite.tscn" id="7_3lts3"]
+[ext_resource type="FontFile" uid="uid://ckxk3elimfey3" path="res://resources/fonts/Kaph-Regular.otf" id="8_djfk7"]
+[ext_resource type="Texture2D" uid="uid://be7t2okvs7rc4" path="res://world/sprites/shelf_full.png" id="8_ekore"]
+[ext_resource type="Texture2D" uid="uid://blau8u4bx2u74" path="res://resources/cutscenes/sprites/intro_05_kid_talks.png" id="8_ug12l"]
+[ext_resource type="Texture2D" uid="uid://l7d0l5ib1igq" path="res://resources/cutscenes/sprites/intro_06_wht worm.png" id="9_4756q"]
+[ext_resource type="Texture2D" uid="uid://jcbpxypma113" path="res://world/sprites/book_pickup.png" id="9_dtg78"]
+[ext_resource type="AudioStream" uid="uid://bcujcmjhr8mvs" path="res://resources/cutscenes/intro_audio/00_long-ago.wav" id="9_punv6"]
+[ext_resource type="AudioStream" uid="uid://c3kqehce38tfh" path="res://resources/cutscenes/intro_audio/01_burst.wav" id="10_6uyeh"]
+[ext_resource type="AudioStream" uid="uid://60q4313kq3hd" path="res://resources/cutscenes/intro_audio/02_devvouring-books.wav" id="11_l7bfu"]
+[ext_resource type="AudioStream" uid="uid://cu6p116vhln46" path="res://resources/cutscenes/intro_audio/03_growing.wav" id="12_nltlf"]
+[ext_resource type="AudioStream" uid="uid://dy6rlu3r4ev7b" path="res://resources/cutscenes/intro_audio/04_grandpa-talking.wav" id="13_byf86"]
+[ext_resource type="AudioStream" uid="uid://bbc4a6e8u7xn5" path="res://resources/cutscenes/intro_audio/05_kid-responds.wav" id="14_07e5k"]
+[ext_resource type="AudioStream" uid="uid://1lm0pt7syv8s" path="res://resources/cutscenes/intro_audio/crashing through debris 1.wav" id="14_v3f33"]
+[ext_resource type="AudioStream" uid="uid://cpfv1jhmomrfd" path="res://resources/cutscenes/intro_audio/06_dont-worry.wav" id="15_qtjmy"]
+[ext_resource type="AudioStream" uid="uid://mu5io6rsrveb" path="res://resources/cutscenes/intro_audio/07_death-1.wav" id="18_w0vge"]
+[ext_resource type="AudioStream" uid="uid://7usys7j3fi8" path="res://resources/cutscenes/intro_audio/07_kid-1.wav" id="19_h7p4a"]
+[ext_resource type="AudioStream" uid="uid://cbitugpii2r5r" path="res://resources/cutscenes/intro_audio/07_kid-2.wav" id="20_dd621"]
+[ext_resource type="AudioStream" uid="uid://jxg8ifxdlqp0" path="res://resources/cutscenes/intro_audio/07_kid-3.wav" id="21_lykou"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_earg7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lu8t1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o37fj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eg3cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bypa2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_siowg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ug12l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4756q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="intro" type="Node2D"]
+script = ExtResource("1_oi6jk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+offset_left = -5984.0
+offset_top = -4003.0
+offset_right = 5657.0
+offset_bottom = 3746.0
+mouse_filter = 2
+color = Color(0.113725, 0.0862745, 0.0745098, 1)
+
+[node name="Camera2D" parent="." instance=ExtResource("1_x4oxy")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_earg7")
+frame = 3
+
+[node name="shelves" type="Node2D" parent="."]
+visible = false
+
+[node name="ShelfFull" type="Sprite2D" parent="shelves"]
+position = Vector2(71, 56)
+scale = Vector2(3.375, 3.6875)
+texture = ExtResource("8_ekore")
+
+[node name="BookPickup" type="Sprite2D" parent="shelves"]
+position = Vector2(67, 135)
+texture = ExtResource("9_dtg78")
+
+[node name="BookPickup2" type="Sprite2D" parent="shelves"]
+position = Vector2(98, 110)
+texture = ExtResource("9_dtg78")
+
+[node name="BookPickup3" type="Sprite2D" parent="shelves"]
+position = Vector2(102, 147)
+texture = ExtResource("9_dtg78")
+
+[node name="BookPickup4" type="Sprite2D" parent="shelves"]
+position = Vector2(-72, 111)
+texture = ExtResource("9_dtg78")
+
+[node name="ShelfFull2" type="Sprite2D" parent="shelves"]
+position = Vector2(-54, 55)
+scale = Vector2(3.375, 3.6875)
+texture = ExtResource("8_ekore")
+
+[node name="Marker2D" type="Marker2D" parent="shelves"]
+position = Vector2(156, -225)
+
+[node name="head_sprite" parent="." instance=ExtResource("5_fbsu1")]
+visible = false
+position = Vector2(27, 85)
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" parent="head_sprite" instance=ExtResource("7_3lts3")]
+visible = false
+position = Vector2(-21, 13.5)
+
+[node name="Sprite2D2" parent="head_sprite" instance=ExtResource("7_3lts3")]
+visible = false
+position = Vector2(-44, 16.5)
+
+[node name="timers" type="Node" parent="."]
+
+[node name="eat_timer" type="Timer" parent="timers"]
+
+[node name="eat_animation_timer" type="Timer" parent="timers"]
+wait_time = 0.25
+one_shot = true
+
+[node name="ground_sprites" type="Node2D" parent="."]
+
+[node name="skip" type="Label" parent="."]
+offset_left = -305.0
+offset_top = 129.0
+offset_right = -49.0
+offset_bottom = 195.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("8_djfk7")
+text = "(press 'Space' to skip)
+"
+horizontal_alignment = 1
+
+[node name="subs" type="Label" parent="."]
+offset_left = -310.0
+offset_top = 150.0
+offset_right = -85.0
+offset_bottom = 216.0
+scale = Vector2(0.85, 0.85)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("8_djfk7")
+text = "Left click -> shoot
+
+"
+
+[node name="lines" type="Node" parent="."]
+
+[node name="sfx_crash" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("14_v3f33")
+volume_db = -10.0
+
+[node name="00_long-ago" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("9_punv6")
+
+[node name="01_burst" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("10_6uyeh")
+
+[node name="02_devvouring-books" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("11_l7bfu")
+
+[node name="03_growing" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("12_nltlf")
+
+[node name="04_grandpa-talking" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("13_byf86")
+
+[node name="05_kid-responds" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("14_07e5k")
+
+[node name="06_dont-worry" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("15_qtjmy")
+
+[node name="07_death-1" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("18_w0vge")
+
+[node name="07_kid-1" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("19_h7p4a")
+volume_db = -5.0
+
+[node name="07_kid-2" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("20_dd621")
+volume_db = -5.0
+
+[node name="07_kid-3" type="AudioStreamPlayer" parent="lines"]
+stream = ExtResource("21_lykou")
+volume_db = -5.0
+
+[connection signal="timeout" from="timers/eat_timer" to="." method="_on_eat_timer_timeout"]
+[connection signal="finished" from="lines/00_long-ago" to="." method="_on_00_longago_finished"]
+[connection signal="finished" from="lines/01_burst" to="." method="_on_01_burst_finished"]
+[connection signal="finished" from="lines/02_devvouring-books" to="." method="_on_02_devvouringbooks_finished"]
+[connection signal="finished" from="lines/03_growing" to="." method="_on_03_growing_finished"]
+[connection signal="finished" from="lines/04_grandpa-talking" to="." method="_on_04_grandpatalking_finished"]
+[connection signal="finished" from="lines/05_kid-responds" to="." method="_on_05_kidresponds_finished"]
+[connection signal="finished" from="lines/06_dont-worry" to="." method="_on_06_dontworry_finished"]
